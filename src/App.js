@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Gallery from "./components/Gallery";
+import Experiences from "./components/Experiences";
+import data from "./data";
+import Slideshow from "./components/Slideshow";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+export default function App() {
+  const cardData = data.map(datum => {
+    return <Slideshow
+    key={datum.id}
+    {...datum}
+    // img={datum.img}
+    // rating={datum.stats.rating}
+    // location={datum.location}
+    // price={datum.price}
+    // title={datum.title}
+    // reviewCount={datum.stats.reviewCount}
+    // country={datum.country}
+    />
+  })
+  return(
+    <div id="app">
+      <Header/>
+      <Gallery/>
+      <Experiences/>
+      <div id="slideshow">
+        {cardData}
+      </div>
     </div>
-  );
+  )
 }
-
-export default App;
